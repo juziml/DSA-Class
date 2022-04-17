@@ -1,11 +1,26 @@
 package com.practice.lib
 
+import com.practice.lib.box.SingleLinkedList
+
 fun main() {
     println("this is main function")
-    println(checkIsPalindrome(str1))
-    println(checkIsPalindrome(str2))
-    println(checkIsPalindrome(str3))
+//    println(checkIsPalindrome(str1))
+//    println(checkIsPalindrome(str2))
+//    println(checkIsPalindrome(str3))
+    testLinkedList()
 }
+
+//快慢指针，定位单链表中间节点
+fun testLinkedList() {
+    val linkedList = SingleLinkedList<String>("a")
+    linkedList.putNext("b")
+    linkedList.putNext("c")
+    linkedList.putNext("d")
+    linkedList.forEach {
+        print("link:$it ")
+    }
+}
+
 
 //回文字符串判断解法
 //1.中心填充+中心拓展法
