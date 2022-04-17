@@ -12,13 +12,29 @@ fun main() {
 
 //快慢指针，定位单链表中间节点
 fun testLinkedList() {
-    val linkedList = SingleLinkedList<String>("a")
-    linkedList.putNext("b")
-    linkedList.putNext("c")
-    linkedList.putNext("d")
-    linkedList.forEach {
-        print("link:$it ")
+    val linkedList = SingleLinkedList<String>("1")
+    linkedList.putNext("2")
+    linkedList.putNext("3")
+    linkedList.putNext("4")
+    linkedList.putNext("5")
+    linkedList.putNext("6")
+    linkedList.putNext("7")
+
+    var slowPointer = linkedList
+    var fastPointer: SingleLinkedList<String>? = slowPointer
+    while (slowPointer.hasNext()) {
+        print("s:${slowPointer.data}: ")
+        slowPointer = slowPointer.next!!
+        fastPointer = fastPointer?.next?.next
+        print("f-${fastPointer?.data}: ")
+        println()
+        if (null == fastPointer) {
+            break
+        }
+
     }
+
+
 }
 
 

@@ -4,11 +4,11 @@ class SingleLinkedList<T>(val data: T) {
     var next: SingleLinkedList<T>? = null
 
     fun putNext(data: T) {
-        var arch = this
-        while (arch.hasNext()) {
-            arch = arch.next!!
+        var node = this
+        while (node.hasNext()) {
+            node = node.next!!
         }
-        arch.next = SingleLinkedList(data)
+        node.next = SingleLinkedList(data)
     }
 
     fun hasNext(): Boolean {
@@ -16,11 +16,11 @@ class SingleLinkedList<T>(val data: T) {
     }
 
     fun forEach(call: (t: T) -> Unit) {
-        var point = this
-        call.invoke(point.data)
-        while (point.hasNext()) {
-            point = point.next!!
-            call.invoke(point.data)
+        var node = this
+        call.invoke(node.data)
+        while (node.hasNext()) {
+            node = node.next!!
+            call.invoke(node.data)
         }
     }
 }
