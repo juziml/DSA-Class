@@ -13,14 +13,16 @@ fun main() {
 
 //快慢指针，定位单链表中间节点
 fun testLinkedList() {
-   val l =  LinkedList<String>();
+    val l = LinkedList<String>();
     l.add("")
 
-    val singleNode = SingleNode<String>("1")
+    val singleNode = SingleNode<String>()
+    singleNode.add("1")
     singleNode.add("2")
     singleNode.add("3")
     singleNode.add("4")
     singleNode.add("5")
+    singleNode.add("6")
     singleNode.forEach {
         println("=== $it")
     }
