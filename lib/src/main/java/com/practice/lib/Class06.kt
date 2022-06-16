@@ -1,9 +1,10 @@
 package com.practice.lib
 
-import com.practice.lib.box.SingleLinkedList
+import com.practice.lib.box.SingleNode
+import java.util.*
 
 fun main() {
-    println("this is main function")
+
 //    println(checkIsPalindrome(str1))
 //    println(checkIsPalindrome(str2))
 //    println(checkIsPalindrome(str3))
@@ -12,27 +13,31 @@ fun main() {
 
 //快慢指针，定位单链表中间节点
 fun testLinkedList() {
-    val linkedList = SingleLinkedList<String>("1")
-    linkedList.putNext("2")
-    linkedList.putNext("3")
-    linkedList.putNext("4")
-    linkedList.putNext("5")
-    linkedList.putNext("6")
-    linkedList.putNext("7")
+   val l =  LinkedList<String>();
+    l.add("")
 
-    var slowPointer = linkedList
-    var fastPointer: SingleLinkedList<String>? = slowPointer
-    while (slowPointer.hasNext()) {
-        print("s:${slowPointer.data}: ")
-        slowPointer = slowPointer.next!!
-        fastPointer = fastPointer?.next?.next
-        print("f-${fastPointer?.data}: ")
-        println()
-        if (null == fastPointer) {
-            break
-        }
-
+    val singleNode = SingleNode<String>("1")
+    singleNode.add("2")
+    singleNode.add("3")
+    singleNode.add("4")
+    singleNode.add("5")
+    singleNode.forEach {
+        println("=== $it")
     }
+
+//    var slowPointer = singleNode
+//    var fastPointer: SingleNode<String>? = slowPointer
+//    while (slowPointer.hasNext()) {
+//        print("s:${slowPointer.element}: ")
+//        slowPointer = slowPointer.next!!
+//        fastPointer = fastPointer?.next?.next
+//        print("f-${fastPointer?.element}: ")
+//        println()
+//        if (null == fastPointer) {
+//            break
+//        }
+//
+//    }
 
 
 }

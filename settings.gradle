@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "DSA"
-include ':app'
+//include ':app'
 include ':lib'
