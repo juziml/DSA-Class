@@ -20,6 +20,7 @@ fun testLinkedList() {
     l.add("4")
     l.add("5")
     l.add("6")
+    l.removeAt(1)
     val singleNode = SingleNode<String>()
     singleNode.add("1")
     singleNode.add("2")
@@ -28,12 +29,14 @@ fun testLinkedList() {
     singleNode.add("5")
     singleNode.add("6")
 
-    singleNode.remove("2")
+    singleNode.remove(1)
     singleNode.forEach {
         println("V=== $it")
     }
-
-
+    singleNode.add("7")
+    singleNode.forEach {
+        println("F=== $it")
+    }
 //    var slowPointer = singleNode
 //    var fastPointer: SingleNode<String>? = slowPointer
 //    while (slowPointer.hasNext()) {

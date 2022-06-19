@@ -57,6 +57,7 @@ class SingleNode<E> {
     fun remove(obj: E): Boolean {
         var result = false
         if (null == head) return result
+
         if (obj == head!!.element) {
             head = head?.next
             return true
@@ -64,9 +65,12 @@ class SingleNode<E> {
         var pre: Node<E> = head!!
         run run@{
             forEachNode {
-                result = it.element == obj
-                if (result) {
+                if (it.element == obj) {
                     pre.next = it.next
+                    if (it.element == last?.element) {
+                        last = pre
+                    }
+                    result = true
                     return@run
                 }
                 pre = it
@@ -75,8 +79,29 @@ class SingleNode<E> {
         return result
     }
 
-    fun remove(index: Int) {
-
+    fun remove(index: Int): Boolean {
+        if (index < 0 || index >= length) return false
+        var result = false
+        var pre = head
+        for (i in 0 until length) {
+            if (i == index && pre != null) {
+                if (i == 0) {
+                    head = pre.next
+                    last = head
+                    break
+                } else {
+                    pre.next = pre.next?.next
+                    if (i == length - 1) {
+                        last = pre
+                    }
+                }
+                result = true
+            }
+            if (i > 0) {
+                pre = pre?.next
+            }
+        }
+        return result
     }
 
 
