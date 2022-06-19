@@ -59,6 +59,7 @@ class SingleNode<E> {
         if (null == head) return result
         if (obj == head!!.element) {
             head = head?.next
+            last = head
             return true
         }
         var pre: Node<E> = head!!

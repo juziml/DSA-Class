@@ -30,6 +30,7 @@ fun testLinkedList() {
     singleNode.add("6")
 
     singleNode.remove(0)
+    singleNode.remove(4)
     singleNode.forEach {
         println("V=== $it")
     }
