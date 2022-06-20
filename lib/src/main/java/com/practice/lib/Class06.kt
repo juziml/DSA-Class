@@ -1,27 +1,25 @@
 package com.practice.lib
 
-import com.practice.lib.box.SingleNode
-import java.util.*
+import com.practice.lib.box.LRULinked
+import com.practice.lib.box.SingleLinked
 
 fun main() {
 
 //    println(checkIsPalindrome(str1))
 //    println(checkIsPalindrome(str2))
 //    println(checkIsPalindrome(str3))
-    testLinkedList()
+//    testLinkedList()
+    testLRU()
+}
+
+fun testLRU() {
+    val singleNode = LRULinked<String>()
+
 }
 
 //快慢指针，定位单链表中间节点
 fun testLinkedList() {
-    val l = LinkedList<String>()
-    l.add("1")
-    l.add("2")
-    l.add("3")
-    l.add("4")
-    l.add("5")
-    l.add("6")
-    l.removeAt(1)
-    val singleNode = SingleNode<String>()
+    val singleNode = SingleLinked<String>()
     singleNode.add("1")
     singleNode.add("2")
     singleNode.add("3")
@@ -38,19 +36,6 @@ fun testLinkedList() {
     singleNode.forEach {
         println("F=== $it")
     }
-//    var slowPointer = singleNode
-//    var fastPointer: SingleNode<String>? = slowPointer
-//    while (slowPointer.hasNext()) {
-//        print("s:${slowPointer.element}: ")
-//        slowPointer = slowPointer.next!!
-//        fastPointer = fastPointer?.next?.next
-//        print("f-${fastPointer?.element}: ")
-//        println()
-//        if (null == fastPointer) {
-//            break
-//        }
-//
-//    }
 
 
 }

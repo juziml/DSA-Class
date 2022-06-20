@@ -1,7 +1,7 @@
 package com.practice.lib.box
 
 
-class SingleLinked<E> {
+class LRULinked<E> {
     private companion object
     class Node<N>(val element: N, var next: Node<N>? = null)
 
