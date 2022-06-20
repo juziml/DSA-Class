@@ -5,22 +5,50 @@ class LRULinked<E> {
     private companion object
     class Node<N>(val element: N, var next: Node<N>? = null)
 
-
-    private var last: Node<E>? = null
     private var head: Node<E>? = null
-
     var length: Int = 0
         private set
+    private val CACHE_MAX = 5
 
-    fun add(e: E) {
-        val newNode = Node(e)
-        if (head == null) {
-            head = newNode
-        } else {
-            last?.next = newNode
+    fun putCache(e: E) {
+        var pre = head
+        for (i in 0 until length) {
+            if (pre == null) return
+            if (i > 0) {
+                if (pre.next?.element == e) {
+                    if (i > 0) {
+                        val cur = pre.next
+                        pre.next = pre.next?.next
+                        val oldHead = head
+                        cur?.next = oldHead
+                        head = cur
+                    }
+                    //存在链表中
+                    return
+                }
+                pre = pre.next
+            }
         }
-        last = newNode
-        ++length
+        if (length < CACHE_MAX) {
+            val oldHead = head
+            val newNode = Node(e)
+            newNode.next = oldHead
+            head = newNode
+            ++length
+        } else {
+            val oldHead = head
+            val newNode = Node(e)
+            newNode.next = oldHead
+            head = newNode
+            var cur = head
+            for (i in 0 until length) {
+                if (i == length - 1) {
+                    cur?.next = null
+                }
+                cur = cur?.next
+            }
+        }
+
     }
 
     fun hasNext(n: Node<E>): Boolean {
@@ -40,78 +68,6 @@ class LRULinked<E> {
         }
 
     }
-
-    private inline fun forEachNode(call: (t: Node<E>) -> Unit) {
-        var cur = head
-        if (cur == null) {
-            return
-        } else {
-            call(cur)
-            while (hasNext(cur!!)) {
-                cur = cur.next
-                call(cur!!)
-            }
-        }
-    }
-
-    fun remove(obj: E): Boolean {
-        var result = false
-        if (null == head) return result
-        if (obj == head!!.element) {
-            head = head?.next
-            last = head
-            return true
-        }
-        var pre: Node<E> = head!!
-        run run@{
-            forEachNode {
-                if (it.element == obj) {
-                    pre.next = it.next
-                    if (it.element == last?.element) {
-                        last = pre
-                    }
-                    result = true
-                    return@run
-                }
-                pre = it
-            }
-        }
-        if (result) {
-            --length
-        }
-        return result
-    }
-
-    fun remove(index: Int): Boolean {
-        if (index < 0 || index >= length) return false
-        var result = false
-        var pre = head
-        for (i in 0 until length) {
-            if (i == index && pre != null) {
-                result = true
-                if (i == 0) {
-                    head = pre.next
-                    if (i == length - 1) {
-                        last = head
-                    }
-                } else {
-                    pre.next = pre.next?.next
-                    if (i == length - 1) {
-                        last = pre
-                    }
-                }
-                break
-            }
-            if (i > 0) {
-                pre = pre?.next
-            }
-        }
-        if (result) {
-            --length
-        }
-        return result
-    }
-
 
 }
 

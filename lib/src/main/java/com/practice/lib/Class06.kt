@@ -14,6 +14,17 @@ fun main() {
 
 fun testLRU() {
     val singleNode = LRULinked<String>()
+    singleNode.putCache("1")
+    singleNode.putCache("2")
+    singleNode.putCache("3")
+    singleNode.putCache("4")
+    singleNode.putCache("5")
+
+    singleNode.putCache("6")
+
+    singleNode.forEach {
+        println("V=== $it")
+    }
 
 }
 
