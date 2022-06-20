@@ -1,7 +1,6 @@
 package com.practice.lib
 
 import com.practice.lib.box.SingleNode
-import java.util.*
 
 fun main() {
 
@@ -13,14 +12,8 @@ fun main() {
 
 //快慢指针，定位单链表中间节点
 fun testLinkedList() {
-    val l = LinkedList<String>()
-    l.add("1")
-    l.add("2")
-    l.add("3")
-    l.add("4")
-    l.add("5")
-    l.add("6")
-    l.removeAt(1)
+
+
     val singleNode = SingleNode<String>()
     singleNode.add("1")
     singleNode.add("2")
