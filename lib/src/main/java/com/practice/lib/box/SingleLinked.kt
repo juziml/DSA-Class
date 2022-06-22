@@ -42,15 +42,10 @@ class SingleLinked<E> {
     }
 
     private inline fun forEachNode(call: (t: Node<E>) -> Unit) {
-        var cur = head
-        if (cur == null) {
-            return
-        } else {
-            call(cur)
-            while (hasNext(cur!!)) {
-                cur = cur.next
-                call(cur!!)
-            }
+        var n = head
+        while (n != null) {
+            call(n)
+            n = n.next
         }
     }
 
@@ -59,7 +54,6 @@ class SingleLinked<E> {
         if (null == head) return result
         if (obj == head!!.element) {
             head = head?.next
-            last = head
             return true
         }
         var pre: Node<E> = head!!
@@ -82,7 +76,7 @@ class SingleLinked<E> {
         return result
     }
 
-    fun remove(index: Int): Boolean {
+    fun removeAt(index: Int): Boolean {
         if (index < 0 || index >= length) return false
         var result = false
         var pre = head
@@ -112,6 +106,12 @@ class SingleLinked<E> {
         return result
     }
 
+
+    fun reverse() {
+        if (length == 0) return
+
+
+    }
 
 }
 

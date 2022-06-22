@@ -8,8 +8,8 @@ fun main() {
 //    println(checkIsPalindrome(str1))
 //    println(checkIsPalindrome(str2))
 //    println(checkIsPalindrome(str3))
-//    testLinkedList()
-    testLRU()
+    testLinkedList()
+//    testLRU()
 }
 
 fun testLRU() {
@@ -30,20 +30,21 @@ fun testLRU() {
 
 //快慢指针，定位单链表中间节点
 fun testLinkedList() {
-    val singleNode = SingleLinked<String>()
-    singleNode.add("1")
-    singleNode.add("2")
-    singleNode.add("3")
-    singleNode.add("4")
-    singleNode.add("5")
-    singleNode.add("6")
+    val singleNode = SingleLinked<Int>()
+    singleNode.add(1)
+    singleNode.add(2)
+    singleNode.add(3)
+    singleNode.add(4)
+    singleNode.add(5)
+    singleNode.add(6)
 
-    singleNode.remove(0)
-    singleNode.remove(4)
+    singleNode.remove(1)
+    singleNode.remove(3)
+    singleNode.remove(6)
+
     singleNode.forEach {
         println("V=== $it")
     }
-    singleNode.add("7")
     singleNode.forEach {
         println("F=== $it")
     }
