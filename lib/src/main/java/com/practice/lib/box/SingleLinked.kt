@@ -14,6 +14,10 @@ class SingleLinked<E> {
 
     fun add(e: E) {
         val newNode = Node(e)
+        add(newNode)
+    }
+
+    fun add(newNode: Node<E>) {
         if (head == null) {
             head = newNode
         } else {
@@ -108,9 +112,16 @@ class SingleLinked<E> {
 
 
     fun reverse() {
-        if (length == 0) return
-
-
+        var pre: Node<E>? = null
+        var cur = head
+        last = cur
+        while (cur != null) {
+            val nextTemp = cur.next
+            cur.next = pre
+            pre = cur
+            cur = nextTemp
+        }
+        head = pre
     }
 
 }

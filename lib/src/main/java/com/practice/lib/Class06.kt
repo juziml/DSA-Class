@@ -38,18 +38,25 @@ fun testLinkedList() {
     singleNode.add(5)
     singleNode.add(6)
 
-    singleNode.remove(1)
-    singleNode.remove(3)
-    singleNode.remove(6)
-
+//    singleNode.remove(1)
+//    singleNode.remove(3)
+//    singleNode.remove(6)
+//
+//    singleNode.forEach {
+//        println("V=== $it")
+//    }
     singleNode.forEach {
-        println("V=== $it")
+        print("$it ")
     }
+    println()
+    singleNode.reverse()
     singleNode.forEach {
-        println("F=== $it")
+        println("$it ")
     }
-
-
+    singleNode.add(7)
+    singleNode.forEach {
+        println("$it ")
+    }
 }
 
 
