@@ -1,7 +1,7 @@
 package com.practice.lib
 
-import com.practice.lib.class06.LRULinked
 import com.practice.lib.class06.SingleLinked
+import com.practice.lib.class07.LRULinked
 
 fun main() {
 
