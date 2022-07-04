@@ -2,6 +2,7 @@ package com.practice.lib.class07
 
 
 class LRULinked<E> {
+
     private companion object
     class Node<N>(val element: N, var next: Node<N>? = null)
 
