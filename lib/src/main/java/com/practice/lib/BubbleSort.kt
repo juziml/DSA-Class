@@ -1,6 +1,6 @@
 package com.practice.lib
-
-val numbers = arrayOf(1, 3, 4, 1, 5, 9, 7, 6, 2)
+//冒泡排序
+private val numbers = arrayOf(1, 3, 4, 1, 5, 9, 7, 6, 2)
 
 fun main() {
     bubbleAsc(numbers)
