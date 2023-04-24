@@ -1,4 +1,4 @@
-package com.practice.lib.class06
+package com.practice.lib.single_link
 
 
 class SingleLinked<E> {

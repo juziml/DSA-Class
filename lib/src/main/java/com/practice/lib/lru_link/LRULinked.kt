@@ -1,4 +1,4 @@
-package com.practice.lib.class07
+package com.practice.lib.lru_link
 
 
 class LRULinked<E> {

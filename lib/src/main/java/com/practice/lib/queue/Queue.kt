@@ -1,4 +1,4 @@
-package com.practice.lib.class09
+package com.practice.lib.queue
 
 import com.practice.lib.print
 
