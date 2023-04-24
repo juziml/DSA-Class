@@ -12,34 +12,30 @@ class LRULinked<E> {
     private val CACHE_MAX = 5
 
     fun putCache(e: E) {
-        var pre = head
-        for (i in 0 until length) {
-            if (pre == null) return
-            if (i > 0) {
-                if (pre.next?.element == e) {
-                    if (i > 0) {
-                        val cur = pre.next
-                        pre.next = pre.next?.next
-                        val oldHead = head
-                        cur?.next = oldHead
-                        head = cur
-                    }
-                    //存在链表中
-                    return
+        var prev: Node<E>? = null
+        var cur = head
+        while (cur != null) {
+            // 已存在，将节点移动到头部
+            if (cur.element == e) {
+                if (prev != null) {
+                    prev.next = cur.next
+                    cur.next = head
+                    head = cur
                 }
-                pre = pre.next
+                return
             }
+            prev = cur
+            cur = cur.next
         }
+        // 不存在，插入到头节点
         if (length < CACHE_MAX) {
-            val oldHead = head
             val newNode = Node(e)
-            newNode.next = oldHead
+            newNode.next = head
             head = newNode
             ++length
         } else {
-            val oldHead = head
             val newNode = Node(e)
-            newNode.next = oldHead
+            newNode.next = head
             head = newNode
             var cur = head
             for (i in 0 until length) {
@@ -58,16 +54,10 @@ class LRULinked<E> {
 
     fun forEach(call: (t: E) -> Unit) {
         var cur = head
-        if (cur == null) {
-            return
-        } else {
+        while (cur != null) {
             call(cur.element)
-            while (hasNext(cur!!)) {
-                cur = cur.next
-                call(cur!!.element)
-            }
+            cur = cur.next
         }
-
     }
 
 }
