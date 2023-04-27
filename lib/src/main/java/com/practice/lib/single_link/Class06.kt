@@ -28,7 +28,6 @@ fun testLRU() {
 
 }
 
-//快慢指针，定位单链表中间节点
 fun testLinkedList() {
     val singleNode = SingleLinked<Int>()
     singleNode.add(1)

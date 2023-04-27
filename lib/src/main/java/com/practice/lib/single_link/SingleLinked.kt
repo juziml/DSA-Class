@@ -3,7 +3,11 @@ package com.practice.lib.single_link
 
 class SingleLinked<E> {
     private companion object
-    class Node<N>(val element: N, var next: Node<N>? = null)
+    class Node<N>(val element: N, var next: Node<N>? = null) {
+        override fun equals(other: Any?): Boolean {
+            return super.equals(other)
+        }
+    }
 
 
     private var last: Node<E>? = null
@@ -30,6 +34,8 @@ class SingleLinked<E> {
     fun hasNext(n: Node<E>): Boolean {
         return n.next != null
     }
+
+    fun getHead() = head
 
     fun forEach(call: (t: E) -> Unit) {
         var cur = head
@@ -128,6 +134,8 @@ class SingleLinked<E> {
     //存值法，碰到连续存到两个相同值时 为有环，时间复杂度最差为O(N)，空间复杂度O(N)
 
     //快慢指针法，快指针==慢指针时为有环，时间复杂度O(N),空间复杂度O(1)
+
+
 }
 
 
