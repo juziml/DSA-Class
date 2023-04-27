@@ -17,7 +17,7 @@ fun isPalindrome(str: String): Boolean {
     if (str.isEmpty()) throw IllegalArgumentException("str can not empty")
     if (str.length == 1) return true
     for (i in 0 until str.length / 2) {
-        if (str[0] != str[str.length - i - 1]) return false
+        if (str[i] != str[str.length - i - 1]) return false
     }
     return true
 }
