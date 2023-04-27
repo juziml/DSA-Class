@@ -3,11 +3,14 @@ package com.practice.lib.palindromestring
 fun main() {
     val str = "AAAACCCC"//8
     val str2 = "AAABAAA"//3
+    val str3 = "12344321"//3
     println(isPalindrome(str))
     println(isPalindrome(str2))
+    println(isPalindrome(str3))
     println("p2---")
     println(isPalindrome2(str))
     println(isPalindrome2(str2))
+    println(isPalindrome2(str3))
 
 }
 
