@@ -3,15 +3,13 @@ package com.practice.lib.single_link
 
 class SingleLinked<E> {
     private companion object
-    class Node<N>(val element: N, var next: Node<N>? = null) {
-        override fun equals(other: Any?): Boolean {
-            return super.equals(other)
-        }
-    }
+    class Node<N>(val element: N, var next: Node<N>? = null)
 
+    var last: Node<E>? = null
+        private set
+    var head: Node<E>? = null
+        private set
 
-    private var last: Node<E>? = null
-    private var head: Node<E>? = null
 
     var length: Int = 0
         private set
@@ -34,9 +32,6 @@ class SingleLinked<E> {
     fun hasNext(n: Node<E>): Boolean {
         return n.next != null
     }
-
-    fun getHead() = head
-
     fun forEach(call: (t: E) -> Unit) {
         var cur = head
         if (cur == null) {
