@@ -2,7 +2,8 @@ package com.practice.lib.palindromestring
 
 import com.practice.lib.single_link.SingleLinked
 
-//链表形式的字符串回文判断
+//链表形式的字符串回文判断，快慢指针确定中间节点，反转右半链表，循环遍历对比
+//要注意：链表长度为奇数，中间节点+1
 
 //双向链表简单些 则从头尾进行 查找，知道次数为 mid 停止
 
