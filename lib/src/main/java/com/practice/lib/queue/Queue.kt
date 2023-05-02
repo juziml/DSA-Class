@@ -76,8 +76,8 @@ class MyStringQueue(private val initSize: Int) {
 
     fun dequeue(): String {
         //过滤无元素
-        if (count() < 0) throw ArrayIndexOutOfBoundsException(
-            "element:${count()}" +
+        if (count() <= 0) throw ArrayIndexOutOfBoundsException(
+            "element count:${count()}" +
                     ",head:$head,tail:$tail"
         )
         val leftElement = items[head]
