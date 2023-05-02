@@ -10,7 +10,7 @@ fun main() {
 
 private fun insertAsc(numbers: Array<Int>) {
 
-    for (i in 1..numbers.size - 1) {
+    for (i in 1 until numbers.size) {
         var iValue = numbers[i]
         var j: Int = i - 1
         for (o in i - 1 downTo 0) {
