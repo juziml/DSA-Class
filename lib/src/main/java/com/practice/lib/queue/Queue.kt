@@ -11,7 +11,18 @@ fun main() {
     aq.enqueue("D")
     aq.enqueue("E")
     aq.printElement()
-
+//    aq.enqueue("F")
+//    aq.printElement()
+    aq.dequeue()
+    aq.dequeue()
+    aq.dequeue()
+    aq.printElement()
+    aq.enqueue("F")
+    aq.printElement()
+    aq.enqueue("G")
+    aq.enqueue("H")
+    aq.enqueue("I")
+    aq.printElement()
 }
 
 /**
@@ -26,7 +37,7 @@ class MyStringQueue(private val initSize: Int) {
         size = initSize
     }
 
-    private var items = Array(size) { "" }
+    private var items = Array(size) { TEMP }
 
     private var head = 0
     private var tail = 0
@@ -40,10 +51,14 @@ class MyStringQueue(private val initSize: Int) {
                 }
                 tail -= head // or tail = count()+1
                 head = 0
+                //清空引用
+                for (i in tail until size) {
+                    items[i] = TEMP
+                }
             } else {
                 //进行扩容，size x 2
                 val newSize = size * 2
-                val newArray = Array(newSize) { "" }
+                val newArray = Array(newSize) { TEMP }
                 for (i in head until tail) {
                     val item = items[i]
                     newArray[i - head] = item
@@ -61,7 +76,7 @@ class MyStringQueue(private val initSize: Int) {
 
     fun dequeue(): String {
         //过滤无元素
-        if (head != tail) throw ArrayIndexOutOfBoundsException(
+        if (count() < 0) throw ArrayIndexOutOfBoundsException(
             "element:${count()}" +
                     ",head:$head,tail:$tail"
         )
@@ -84,7 +99,7 @@ class MyStringQueue(private val initSize: Int) {
         items.forEachIndexed { index, s ->
             strBuilder.append("$index:$s,")
         }
-        println(strBuilder.toString())
+        println("size:$size> count:${count()}> $strBuilder")
     }
 
 }
