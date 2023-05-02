@@ -24,6 +24,7 @@ fun bubbleAsc(numbers: Array<Int>) {
             }
         }
         print("$o,")
+        //无数据交换时，确定完全有序，退出循环
         if (!flag) break
     }
     println("-")
