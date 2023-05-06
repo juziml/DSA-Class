@@ -1,4 +1,4 @@
-package com.practice.lib
+package com.practice.lib.ext
 
 fun String.print(secondTag: String? = null) {
     secondTag?.let {
@@ -7,4 +7,10 @@ fun String.print(secondTag: String? = null) {
         println(this)
     }
 
+}
+
+fun <T> Array<T>.print() {
+    forEachIndexed { index, t ->
+        print("$index:$t,")
+    }
 }
