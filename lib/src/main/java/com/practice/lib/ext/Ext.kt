@@ -11,6 +11,6 @@ fun String.print(secondTag: String? = null) {
 
 fun <T> Array<T>.print() {
     forEachIndexed { index, t ->
-        print("$index:$t,")
+        print("$t:$index,")
     }
 }
