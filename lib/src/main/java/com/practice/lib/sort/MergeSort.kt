@@ -4,15 +4,18 @@ import com.practice.lib.ext.print
 
 fun main() {
     val arr = arrayOf(1, 5, 6, 3, 2, 4)
-    MergeSort.mergeSort(arr, 0, arr.size - 1)
+    MergeSort.sort(arr)
     arr.print()
 }
 
-// 归并排序算法
+// 归并排序算法 Time: O(nlogn) Place:O(n)
 object MergeSort {
+    fun sort(array: Array<Int>) {
+        mergeSort(array, 0, array.size - 1)
+    }
 
-    // 利用递归 无限拆分 数组为 2段
-    fun mergeSort(array: Array<Int>, indexP: Int, indexR: Int) {
+    // 利用递归 无限拆分数组为 2段
+    private fun mergeSort(array: Array<Int>, indexP: Int, indexR: Int) {
         // 不可再分
         if (indexP >= indexR) return
         // 取 p..r 的中间值 q
