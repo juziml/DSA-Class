@@ -10,7 +10,13 @@ fun String.print(secondTag: String? = null) {
 }
 
 fun <T> Array<T>.print() {
+    print("element:")
     forEachIndexed { index, t ->
-        print("$t:$index,")
+        print("$t:")
+    }
+    println()
+    print("index  :")
+    forEachIndexed { index, t ->
+        print("$index:")
     }
 }
