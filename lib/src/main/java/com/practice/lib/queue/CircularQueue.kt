@@ -7,17 +7,6 @@ package com.practice.lib.queue
 // 注意：tail 经历了从大于 head 到小于 head 再到 追 上head 再超过 head的 循环
 // 清理引用，判断实际元素个数，扩容，都与非循环队列不同
 private class CircularQueue(private val initSize: Int) {
-    private val TEMP = ""
-    var size: Int
-        private set
 
-    init {
-        size = initSize
-    }
-
-    private var items = Array(size) { TEMP }
-
-    private var head = 0
-    private var tail = 0
 
 }
