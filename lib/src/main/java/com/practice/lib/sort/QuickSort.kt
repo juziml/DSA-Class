@@ -2,13 +2,36 @@ package com.practice.lib.sort
 
 import com.practice.lib.ext.print
 
+/*
+思考题：
+现在你有 10 个接口访问日志文件夹，每个日志文件大小约 300MB，
+每个文件里的日志都是按照时间戳从小到大排序的。
+你希望将这 10 个较小的日志文件夹，合并为 1 个日志文件夹，
+合并之后的日志仍然按照时间戳从小到大排列。
+如果处理上述排序任务的机器内存只有 1GB，
+你有什么好的解决思路，能“快速”地将这 10 个日志文件合并吗？
+
+思路：
+日志都是按照时间戳：要稳定排序
+每个文件夹内，已经是从小到大排序的了
+1GB，在空间上只能容忍 同时操作3个文件夹，那么就不可以在内存里做已排未排的管理
+1.获得总数 n，设定起点 i=0，新建一个 tempMerge 文件夹
+2.开10个 io thread，再为每个文件夹读取设置一个下标 xIndex
+3.每个文件夹读一条一次读取10条,选出最小的，
+写入tempMerge 文件夹，并将对应的xIndex++，i++
+再读取一条，重新对10条进行比较，以此循环，直到 i = n-1
+整个合并结束，给tempMerge 原地改名为 mergedLogs
+
+ */
 fun main() {
     val arr = arrayOf(8, 3, 9, 7, 1, 2, 6, 5, 4)
     QuickSort.sort(arr)
     arr.print()
 }
 
-// 快速排序
+// 快速排序，非稳定排序
+// Time:O(nlogn) Place:O(1)
+// 在完全有序的数据下 时间复杂度 退化为 O(n^2）
 object QuickSort {
 
     fun sort(arr: Array<Int>) {

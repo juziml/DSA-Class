@@ -8,7 +8,8 @@ fun main() {
     arr.print()
 }
 
-// 归并排序算法 Time: O(nlogn) Place:O(n)
+// 归并排序算法，稳定排序
+// Time: O(nlogn) Place:O(n)
 object MergeSort {
     fun sort(array: Array<Int>) {
         mergeSort(array, 0, array.size - 1)
