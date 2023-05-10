@@ -3,7 +3,7 @@ package com.practice.lib.sort
 fun main() {
 
     val nums = intArrayOf(1, 2, 3, 4, 5, 2, 1)
-    InsertSort.insertionSort(nums, nums.size)
+    InsertSort.insertionSort(nums)
     nums.forEachIndexed { index, i ->
         print("$i:")
     }
@@ -20,8 +20,9 @@ fun main() {
 
  */
 object InsertSort {
-    fun insertionSort(a: IntArray, n: Int) {
-        if (n <= 1) return
+    fun insertionSort(a: IntArray) {
+        val n = a.size
+        if (a.isEmpty() || n <= 1) return
         for (i in 1 until n) {
             val value = a[i]
             var j = i - 1

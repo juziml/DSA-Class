@@ -12,6 +12,7 @@ fun main() {
 // Time: O(nlogn) Place:O(n)
 object MergeSort : ISort {
     override fun sort(array: Array<Int>) {
+        if (array.isEmpty()) return
         mergeSort(array, 0, array.size - 1)
     }
 

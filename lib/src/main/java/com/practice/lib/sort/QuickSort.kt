@@ -34,8 +34,9 @@ fun main() {
 // 在完全有序的数据下 时间复杂度 退化为 O(n^2）
 object QuickSort : ISort {
 
-    override fun sort(arr: Array<Int>) {
-        quickSort(arr, 0, arr.size - 1)
+    override fun sort(array: Array<Int>) {
+        if (array.isEmpty()) return
+        quickSort(array, 0, array.size - 1)
     }
 /*
 选取任一下标数据作为参考点 值
