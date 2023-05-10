@@ -32,9 +32,9 @@ fun main() {
 // 快速排序，非稳定排序
 // Time:O(nlogn) Place:O(1)
 // 在完全有序的数据下 时间复杂度 退化为 O(n^2）
-object QuickSort {
+object QuickSort : ISort {
 
-    fun sort(arr: Array<Int>) {
+    override fun sort(arr: Array<Int>) {
         quickSort(arr, 0, arr.size - 1)
     }
 /*
