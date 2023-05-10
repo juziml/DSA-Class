@@ -1,10 +1,12 @@
 package com.practice.lib.sort
 
+import com.practice.lib.ext.printElement
+
 fun main() {
-
-
+    val a8 = arrayOf(2, 5, 3, 0, 2, 3, 0, 3)
+    CountSort.sort(a8)
 }
-// 线性排序
+// 线性排序：
 
 // 桶排序
 // 把数据进行分桶，比如 200个 1～100的数据，分101 个桶，
@@ -14,7 +16,7 @@ fun main() {
 // 计数排序
 // 好巧妙的设计
 // 1.算桶（scope）
-// 2.计数（前绪求和）
+// 2.计数（前序求和）
 // 3.排序（遍历原始数组，从桶中取坐标，求和值-1）
 object CountSort : ISort {
 
@@ -24,8 +26,43 @@ object CountSort : ISort {
     }
 
     private fun countSort(array: Array<Int>) {
+        val aSize = array.size
+        var max = 0
+        array.forEach {
+            if (it > max) max = it
+        }
+        val cA = Array(max + 1) { 0 }
+        array.forEach {
+            val x = cA[it]
+            cA[it] = x + 1
+        }
+        cA.printElement("cA 算桶（scope）")
+        var value = cA[0]
+        //消 null
+        cA[0] = value
+        for (index in 1 until cA.size) {
+            value += cA[index]
+            cA[index] = value
+        }
+        cA.printElement("cA:计数（前序求和）")
 
-
+        val rA = Array(aSize) { 0 }
+        for (i in aSize - 1 downTo 0) {
+            val aElement = array[i]
+            val rIndex = cA[aElement]
+            rA[rIndex - 1] = aElement
+            cA[aElement] = rIndex - 1
+        }
+        rA.printElement("rA 排序（遍历原始数组，从桶中取坐标，求和值-1）")
+//        cA 算桶（scope） >:
+//        element:2:0:2:3:0:1:
+//        index  :0:1:2:3:4:5:
+//        cA:计数（前序求和） >:
+//        element:2:2:4:7:7:8:
+//        index  :0:1:2:3:4:5:
+//        rA 排序（遍历原始数组，从桶中取坐标，求和值-1） >:
+//        element:0:0:2:2:3:3:3:5:
+//        index  :0:1:2:3:4:5:6:7:
     }
 }
 

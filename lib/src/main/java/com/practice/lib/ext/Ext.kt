@@ -1,6 +1,6 @@
 package com.practice.lib.ext
 
-fun String.print(secondTag: String? = null) {
+fun String.printElement(secondTag: String? = null) {
     secondTag?.let {
         println("$it $this")
     }.let {
@@ -9,7 +9,8 @@ fun String.print(secondTag: String? = null) {
 
 }
 
-fun <T> Array<T>.print() {
+fun <T> Array<T>.printElement(tag: String = "") {
+    println("$tag >:")
     print("element:")
     forEachIndexed { index, t ->
         print("$t:")
@@ -19,4 +20,5 @@ fun <T> Array<T>.print() {
     forEachIndexed { index, t ->
         print("$index:")
     }
+    println()
 }

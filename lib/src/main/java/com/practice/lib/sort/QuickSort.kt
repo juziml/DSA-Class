@@ -1,6 +1,6 @@
 package com.practice.lib.sort
 
-import com.practice.lib.ext.print
+import com.practice.lib.ext.printElement
 
 /*
 思考题：
@@ -26,7 +26,7 @@ import com.practice.lib.ext.print
 fun main() {
     val arr = arrayOf(8, 3, 9, 7, 1, 2, 6, 5, 4)
     QuickSort.sort(arr)
-    arr.print()
+    arr.printElement()
 }
 
 // 快速排序，非稳定排序

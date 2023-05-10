@@ -1,11 +1,11 @@
 package com.practice.lib.sort
 
-import com.practice.lib.ext.print
+import com.practice.lib.ext.printElement
 
 fun main() {
     val arr = arrayOf(1, 5, 6, 3, 2, 4)
     MergeSort.sort(arr)
-    arr.print()
+    arr.printElement()
 }
 
 // 归并排序算法，稳定排序
