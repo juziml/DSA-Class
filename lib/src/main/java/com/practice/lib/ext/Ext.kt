@@ -1,24 +1,31 @@
 package com.practice.lib.ext
 
-fun String.printElement(secondTag: String? = null) {
-    secondTag?.let {
-        println("$it $this")
-    }.let {
-        println(this)
-    }
+import java.lang.StringBuilder
 
+fun String.printSelf(secondTag: String = "") {
+    println("$secondTag : $this")
 }
 
 fun <T> Array<T>.printElement(tag: String = "") {
-    println("$tag >:")
-    print("element:")
+    println("\n $tag >:")
+    val elements = StringBuilder("elements: ")
+    val indices = StringBuilder("index: ")
     forEachIndexed { index, t ->
-        print("$t:")
+        elements.append("$t:")
+        indices.append("$index:")
     }
-    println()
-    print("index  :")
+    println(elements)
+    println(indices)
+}
+
+fun IntArray.printElement(tag: String = "") {
+    println("\n $tag >:")
+    val elements = StringBuilder("elements: ")
+    val indices = StringBuilder("index___: ")
     forEachIndexed { index, t ->
-        print("$index:")
+        elements.append("$t:")
+        indices.append("$index:")
     }
-    println()
+    println(elements)
+    println(indices)
 }
