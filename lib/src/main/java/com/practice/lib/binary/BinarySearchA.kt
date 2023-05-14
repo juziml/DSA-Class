@@ -2,6 +2,7 @@ package com.practice.lib.binary
 
 import com.practice.lib.ext.printElement
 import com.practice.lib.ext.printSelf
+import kotlin.math.abs
 
 fun main() {
 
@@ -10,6 +11,9 @@ fun main() {
     val result = BinarySearchA.search(numbers, 19)
     val result2 = BinarySearchA.searchByRecursion(numbers, 19)
     "result:$result, result2:$result2".printSelf()
+    val sq = BinarySearchA.sqrt(8.0)
+    "sq:$sq".printSelf()
+
 }
 
 // 非递归方式实现二分查找
@@ -65,4 +69,54 @@ object BinarySearchA {
         }
     }
 
+    fun sqrt(value: Double): Double {
+        if (value == 1.0) return 1.0
+        return sqrtImp(value, 0.0, value)
+    }
+
+    private fun sqrtImp(value: Double, low: Double, high: Double): Double {
+        // 采取递归求解
+        // 退出条件：中位数 平方后 == value 或 小数到第 6位
+        // 小数第6位就可以控制递归深度
+        val mid = low + (high - low) / 2.0
+        val square = mid * mid
+        if (square == value) return mid
+        if (abs(square - value) < 1 && countDecimalPlaces(mid) >= 6) {
+            return mid
+        }
+        return if (square < value) {
+            sqrtImp(value, mid, high)
+        } else {
+            sqrtImp(value, low, mid)
+        }
+    }
+
+    private fun countDecimalPlaces(number: Double): Int {
+        val stringRepresentation = number.toString()
+
+        val decimalSeparatorIndex = stringRepresentation.indexOf('.')
+        if (decimalSeparatorIndex < 0) {
+            return 0
+        }
+
+        var decimalPlaces = 0
+        for (i in decimalSeparatorIndex + 1 until stringRepresentation.length) {
+            if (stringRepresentation[i] == '0') {
+                continue // 跳过末尾的零
+            }
+            decimalPlaces = stringRepresentation.length - i
+            break
+        }
+
+        if (decimalPlaces == 0) {
+            return 0
+        }
+
+        if (stringRepresentation[0] == '-') {
+            decimalPlaces-- // 如果数字是负数，则有效小数位数减一
+        }
+
+        return decimalPlaces
+    }
 }
+
