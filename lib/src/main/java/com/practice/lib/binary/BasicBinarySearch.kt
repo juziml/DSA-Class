@@ -8,18 +8,18 @@ fun main() {
 
     val numbers = IntArray(20) { it + 1 }
     numbers.printElement("BinarySearchA")
-    val result = BinarySearchA.search(numbers, 19)
-    val result2 = BinarySearchA.searchByRecursion(numbers, 19)
+    val result = BasicBinarySearch.search(numbers, 19)
+    val result2 = BasicBinarySearch.searchByRecursion(numbers, 19)
     "result:$result, result2:$result2".printSelf()
-    val sq = BinarySearchA.sqrt(8.0)
+    val sq = BasicBinarySearch.sqrt(8.0)
     "sq:$sq".printSelf()
 
 }
 
-// 非递归方式实现二分查找
+// 基础二分查找，主要是体现 二分查找的基础理论
 // 二分查找用于 在有序数据中 查找某一个数，时间复杂度O(log N)
 // 下面以正数 序列为例
-object BinarySearchA {
+object BasicBinarySearch {
     /**
      * 常规实现
      */
