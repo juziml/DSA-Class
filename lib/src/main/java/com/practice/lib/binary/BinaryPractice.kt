@@ -58,7 +58,7 @@ object BinaryPractice {
         // 定义 low，high
         // 定义终止条件：low <= high
         // mid = low +(high -low) /2
-        // 判断 mid == 0，为首个，array[mid +1] != x 为首个，否则继续二分
+        // 满足 mid == n，为最后一个 或者 array[mid +1] != x ，否则继续二分
         var low = 0
         var high = array.size - 1
         while (low <= high) {
@@ -68,7 +68,7 @@ object BinaryPractice {
             } else if (array[mid] > x) {
                 high = mid - 1
             } else {
-                if (mid == 0 || array[mid + 1] != x) return mid
+                if (mid == array.size - 1 || array[mid + 1] != x) return mid
                 else low = mid + 1
             }
         }
