@@ -10,6 +10,29 @@ import com.practice.lib.ext.printSelf
 •查找最后一个小于等于给定值的元素
 
 练习题：
+如果有序数组是一个循环有序数组，比如 4，5，6，1，2，3。
+针对这种情况，如何实现一个求“值等于给定值”的二分查找算法呢？
+我的解题思路：
+先二分找到 max,min 的位置，完成第一个二分，之后再继续用基础二分查找法
+优秀的解题思路：
+    public int solution(int[] nums, int target) {
+        int s = 0;
+        int e = nums.length - 1;
+        while (e >= s){
+            int mid = s + (e-s)/2;
+            if (nums[mid] == target) return mid;
+            if (nums[mid] < nums[e]) {
+                if (target < nums[mid] || target > nums[e]) {
+                    e = mid - 1;
+                } else s = mid + 1;
+            } else {
+                if (target < nums[s] || target > nums[mid]) {
+                    s = mid + 1;
+                } else e = mid - 1;
+            }
+        }
+        return -1;
+    }
 
  */
 fun main() {
