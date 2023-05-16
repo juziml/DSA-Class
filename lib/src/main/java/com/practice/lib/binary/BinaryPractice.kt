@@ -15,6 +15,7 @@ import com.practice.lib.ext.printSelf
 我的解题思路：
 先二分找到 max,min 的位置，完成第一个二分，之后再继续用基础二分查找法
 优秀的解题思路：
+划分出区间后，同时兼容 s-mid,mid - e 是否包含零界点
     public int solution(int[] nums, int target) {
         int s = 0;
         int e = nums.length - 1;
